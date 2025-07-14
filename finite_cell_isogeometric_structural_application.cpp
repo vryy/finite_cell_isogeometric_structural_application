@@ -39,8 +39,6 @@ namespace Kratos
 
     void KratosFiniteCellIsogeometricStructuralApplication::Register()
     {
-        // calling base class register to register Kratos components
-        KratosApplication::Register();
         std::cout << "Initializing KratosFiniteCellIsogeometricStructuralApplication... " << std::endl;
 
         KRATOS_REGISTER_ELEMENT( "KinematicLinearFiniteCellBezier2D", mKinematicLinearFiniteCellBezier2D )

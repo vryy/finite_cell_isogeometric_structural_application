@@ -1,29 +1,25 @@
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-
 message("**** configuring KratosFiniteCellIsogeometricStructuralApplication ****")
-
-######### add include directory here
-include_directories( ${CMAKE_SOURCE_DIR}/kratos )
-include_directories( ${CMAKE_SOURCE_DIR}/applications )
-include_directories( ${CMAKE_SOURCE_DIR}/applications/FINITE_CELL_ISOGEOMETRIC_APPLICATION )
-include_directories( ${CMAKE_SOURCE_DIR}/applications/isogeometric_application )
-include_directories( ${CMAKE_SOURCE_DIR}/applications/structural_application )
-#######################################################################
 
 ######### add compilation units here
 set( KRATOS_FINITE_CELL_ISOGEOMETRIC_APPLICATION_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/finite_cell_isogeometric_structural_application.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/custom_python/finite_cell_isogeometric_structural_python_application.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/custom_python/finite_cell_isogeometric_structural_python_application.cpp
 )
 #######################################################################
 
 ## define library Kratos which defines the basic python interface
 add_library(KratosFiniteCellIsogeometricStructuralApplication SHARED ${KRATOS_FINITE_CELL_ISOGEOMETRIC_APPLICATION_SOURCES})
-target_link_libraries(KratosFiniteCellIsogeometricStructuralApplication KratosCore)
-target_link_libraries(KratosFiniteCellIsogeometricStructuralApplication KratosFiniteCellApplication)
-target_link_libraries(KratosFiniteCellIsogeometricStructuralApplication KratosFiniteCellStructuralApplication)
-target_link_libraries(KratosFiniteCellIsogeometricStructuralApplication KratosIsogeometricApplication)
-target_link_libraries(KratosFiniteCellIsogeometricStructuralApplication KratosStructuralApplication)
+target_link_libraries(KratosFiniteCellIsogeometricStructuralApplication PRIVATE KratosCore)
+target_link_libraries(KratosFiniteCellIsogeometricStructuralApplication PRIVATE KratosFiniteCellApplication)
+target_link_libraries(KratosFiniteCellIsogeometricStructuralApplication PRIVATE KratosFiniteCellStructuralApplication)
+target_link_libraries(KratosFiniteCellIsogeometricStructuralApplication PRIVATE KratosIsogeometricApplication)
+target_link_libraries(KratosFiniteCellIsogeometricStructuralApplication PRIVATE KratosStructuralApplication)
+target_compile_definitions(KratosFiniteCellIsogeometricStructuralApplication PRIVATE KRATOS_CORE=IMPORT)
+target_compile_definitions(KratosFiniteCellIsogeometricStructuralApplication PRIVATE FINITE_CELL_ISOGEOMETRIC_APPLICATION=EXPORT)
+target_compile_definitions(KratosFiniteCellIsogeometricStructuralApplication PRIVATE FINITE_CELL_APPLICATION=IMPORT)
+target_compile_definitions(KratosFiniteCellIsogeometricStructuralApplication PRIVATE FINICEL_CELL_STRUCTURAL_APPLICATION=IMPORT)
+target_compile_definitions(KratosFiniteCellIsogeometricStructuralApplication PRIVATE ISOGEOMETRIC_APPLICATION=IMPORT)
+target_compile_definitions(KratosFiniteCellIsogeometricStructuralApplication PRIVATE STRUCTURAL_APPLICATION=IMPORT)
 set_target_properties(KratosFiniteCellIsogeometricStructuralApplication PROPERTIES PREFIX "")
 install(TARGETS KratosFiniteCellIsogeometricStructuralApplication DESTINATION libs )
 #######################################################################
