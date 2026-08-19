@@ -25,7 +25,7 @@ namespace Kratos
     KRATOS_CREATE_VARIABLE( double, FORCE_MAGNITUDE )
 
     KratosFiniteCellIsogeometricStructuralApplication::KratosFiniteCellIsogeometricStructuralApplication()
-    : KratosApplication()
+    : KratosApplication("FiniteCellIsogeometricStructuralApplication")
     , mKinematicLinearFiniteCellBezier2D( 0, Element::GeometryType::Pointer( new FiniteCellGeo2dBezier< Node<3> >() ) )
     , mKinematicLinearFiniteCellBezier3D( 0, Element::GeometryType::Pointer( new FiniteCellGeo3dBezier< Node<3> >() ) )
     , mExtrapolatedKinematicLinearFiniteCellBezier2D( 0, Element::GeometryType::Pointer( new FiniteCellGeo2dBezier< Node<3> >() ) )
@@ -39,7 +39,7 @@ namespace Kratos
 
     void KratosFiniteCellIsogeometricStructuralApplication::Register()
     {
-        std::cout << "Initializing KratosFiniteCellIsogeometricStructuralApplication... " << std::endl;
+        std::cout << "Initializing KratosFiniteCellIsogeometricStructuralApplication..." << std::endl;
 
         KRATOS_REGISTER_ELEMENT( "KinematicLinearFiniteCellBezier2D", mKinematicLinearFiniteCellBezier2D )
         KRATOS_REGISTER_ELEMENT( "KinematicLinearFiniteCellBezier3D", mKinematicLinearFiniteCellBezier3D )
@@ -57,4 +57,3 @@ namespace Kratos
     }
 
 } // namespace Kratos
-

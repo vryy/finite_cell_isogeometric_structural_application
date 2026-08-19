@@ -51,16 +51,12 @@ namespace Kratos
     ///@name Kratos Classes
     ///@{
 
-    /// Short class definition.
-    /** Detail class definition.
-    */
     class KratosFiniteCellIsogeometricStructuralApplication : public KratosApplication
     {
     public:
         ///@name Type Definitions
         ///@{
 
-        /// Pointer definition of KratosMultiphaseApplication
         KRATOS_CLASS_POINTER_DEFINITION(KratosFiniteCellIsogeometricStructuralApplication);
 
         ///@}
@@ -71,7 +67,7 @@ namespace Kratos
         KratosFiniteCellIsogeometricStructuralApplication();
 
         /// Destructor.
-        virtual ~KratosFiniteCellIsogeometricStructuralApplication(){}
+        ~KratosFiniteCellIsogeometricStructuralApplication() override {}
 
         ///@}
         ///@name Operators
@@ -125,7 +121,6 @@ namespace Kratos
             rOStream << "Conditions:" << std::endl;
             KratosComponents<Condition>().PrintData(rOStream);
         }
-
 
         ///@}
         ///@name Friends
@@ -218,13 +213,11 @@ namespace Kratos
         ///@name Un accessible methods
         ///@{
 
-
         /// Assignment operator.
         KratosFiniteCellIsogeometricStructuralApplication& operator=(KratosFiniteCellIsogeometricStructuralApplication const& rOther);
 
         /// Copy constructor.
         KratosFiniteCellIsogeometricStructuralApplication(KratosFiniteCellIsogeometricStructuralApplication const& rOther);
-
 
         ///@}
 
@@ -243,8 +236,6 @@ namespace Kratos
 
     ///@}
 
-
 } // namespace Kratos
 
 #endif // KRATOS_FINITE_CELL_STRUCTURAL_APPLICATION_H_INCLUDED defined
-
